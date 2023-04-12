@@ -15,7 +15,7 @@ def get_default_arguments(description=None):
     parser.add_argument("--model", type=str,
                         default="Keci",
                         help="Available models: CMult, ConEx, ConvQ, ConvO, DistMult, QMult, OMult, "
-                             "Shallom, AConEx, ConEx, ComplEx, DistMult, TransE, Keci")
+                             "Shallom, AConEx, ConEx, ComplEx, DistMult, TransE, Keci, FMult")
     parser.add_argument('--p', type=int, default=0,
                         help='P for Clifford Algebra')
     parser.add_argument('--q', type=int, default=1,

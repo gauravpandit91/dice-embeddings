@@ -1,4 +1,4 @@
-name: dicee
+name: daikiri
 channels:
   - defaults
 dependencies:
@@ -132,4 +132,4 @@ dependencies:
     - yarl==1.7.2
     - zict==2.0.0
     - zipp==3.7.0
-prefix: /home/demir/anaconda3/envs/dicee
+prefix: /home/demir/anaconda3/envs/daikiri
