@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="/.fancyindex/style.css" type="text/css"/>
+
+    <title>Files...</title>
+    <script>
+        window.document.title = window.location.pathname;
+    </script>
+</head>
+<body>
+    <a href="https://project-hobbit.eu/"><img src="/.fancyindex/logo.png" class="logo"></a>
+    <hr />
+
+    <h1>
+/KGE/DBpedia/ConEx/</h1>
+<table id="list" cellpadding="0.1em" cellspacing="0">
+<colgroup><col width="55%"/><col width="20%"/><col width="25%"/></colgroup>
+<thead><tr><th><a href="?C=N&O=A">File Name</a>&nbsp;<a href="?C=N&O=D">&nbsp;↓&nbsp;</a></th><th><a href="?C=S&O=A">File Size</a>&nbsp;<a href="?C=S&O=D">&nbsp;↓&nbsp;</a></th><th><a href="?C=M&O=A">Date</a>&nbsp;<a href="?C=M&O=D">&nbsp;↓&nbsp;</a></th></tr></thead>
+<tbody><tr><td><a href="../?C=M&amp;O=D">Parent directory/</a></td><td>-</td><td>-</td></tr><tr><td><a href="configuration.json">configuration.json</a></td><td>   2962</td><td>05-Jan-2023 11:11</td></tr>
+<tr><td><a href="train_set.npy">train_set.npy</a></td><td>     1G</td><td>05-Jan-2023 09:00</td></tr>
+<tr><td><a href="relation_to_idx.p">relation_to_idx.p</a></td><td>   575K</td><td>05-Jan-2023 08:57</td></tr>
+<tr><td><a href="entity_to_idx.p">entity_to_idx.p</a></td><td>   467M</td><td>05-Jan-2023 08:57</td></tr>
+<tr><td><a href="info.txt">info.txt</a></td><td>    915</td><td>28-Oct-2022 11:20</td></tr>
+<tr><td><a href="model.pt">model.pt</a></td><td>     1G</td><td>08-Aug-2022 08:26</td></tr>
+<tr><td><a href="report.json">report.json</a></td><td>    242</td><td>08-Aug-2022 08:25</td></tr>
+<tr><td><a href="relation_to_idx.gzip">relation_to_idx.gzip</a></td><td>   155K</td><td>08-Aug-2022 08:25</td></tr>
+<tr><td><a href="idx_train_df.gzip">idx_train_df.gzip</a></td><td>   231M</td><td>08-Aug-2022 08:25</td></tr>
+<tr><td><a href="entity_to_idx.gzip">entity_to_idx.gzip</a></td><td>    77M</td><td>08-Aug-2022 08:25</td></tr>
+<tr><td><a href="eval_report.json">eval_report.json</a></td><td>      2</td><td>08-Aug-2022 08:25</td></tr>
+</tbody></table>    </div>
+</body>
+</html>

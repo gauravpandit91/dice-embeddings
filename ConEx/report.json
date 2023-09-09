@@ -1,0 +1,9 @@
+{
+    "num_train_triples": 45687385,
+    "num_entities": 7941431,
+    "num_relations": 13135,
+    "NumParam": 397889134,
+    "EstimatedSizeMB": 1591.5565359999998,
+    "Runtime": "108.407 hours",
+    "path_experiment_folder": "ConExDBpedia"
+}

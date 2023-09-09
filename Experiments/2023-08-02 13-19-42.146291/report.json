@@ -1,0 +1,10 @@
+{
+    "num_train_triples": 10432,
+    "num_entities": 135,
+    "num_relations": 92,
+    "runtime_kg_loading": 0.1168055534362793,
+    "EstimatedSizeMB": 0.006927490234375,
+    "NumParam": 7264,
+    "path_experiment_folder": "/home/dice/Desktop/dice-embeddings/Experiments/2023-08-02 13-19-42.146291",
+    "Runtime": 12.886905431747437
+}
