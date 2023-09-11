@@ -249,7 +249,7 @@ class LFMult(BaseKGE): # embedding with polynomials
         head_ent_emb, rel_emb, tail_ent_emb = self.get_triple_representation(idx_triple)
 
         
-        score = self.comp_func(head_ent_emb,rel_emb,tail_ent_emb)
+        score = self.vtp_score(head_ent_emb,rel_emb,tail_ent_emb)
         
         return score
 
@@ -297,6 +297,8 @@ class LFMult(BaseKGE): # embedding with polynomials
         i_range, j_range, k_range = torch.meshgrid(torch.arange(self.embedding_dim),torch.arange(self.embedding_dim),torch.arange(self.embedding_dim))
 
         terms = 1 / (1 + (i_range + j_range)%self.embedding_dim) / (1+ k_range)
+
+        #terms = 1 / (1 + i_range + j_range) / (1+ k_range)
 
 
         terms1 = h.view(-1, 1, self.embedding_dim, 1) * t.view(-1, self.embedding_dim, 1, 1) * r.view(-1, 1, 1,self.embedding_dim)
