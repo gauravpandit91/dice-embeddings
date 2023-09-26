@@ -25,9 +25,9 @@ def get_default_arguments(description=None):
                         help="A flag for saving embeddings in csv file.")
     # Model related arguments
     parser.add_argument("--model", type=str,
-                        default="LFMult2",
+                        default="LFMult1",
                         choices=["FMult","ConEx", "AConEx", "ConvQ", "AConvQ", "ConvO", "AConvO", "QMult", 
-                                 "OMult", "Shallom", "DistMult", "TransE", "ComplEx", "Keci", "distMult","LFMult","LFMult1",
+                                 "OMult", "Shallom", "DistMult", "TransE", "ComplEx", "Keci", "distMult","LFMult","LFMult1","Keci_r",
                                  "Pykeen_DistMult", "Pykeen_QuatE", "Pykeen_MuRE", "Pykeen_BoxE"],
                         help="Available knowledge graph embedding models. "
                              "To use other knowledge graph embedding models available in python, e.g.,"
@@ -35,11 +35,11 @@ def get_default_arguments(description=None):
     parser.add_argument('--optim', type=str, default='Adam',
                         help='An optimizer',
                         choices=['Adam', 'SGD'])
-    parser.add_argument('--embedding_dim', type=int, default=4,
+    parser.add_argument('--embedding_dim', type=int, default=16,
                         help='Number of dimensions for an embedding vector. ')
-    parser.add_argument("--num_epochs", type=int, default=1, help='Number of epochs for training. ')
-    parser.add_argument('--batch_size', type=int, default=1, help='Mini batch size')
-    parser.add_argument("--lr", type=float, default=0.1)
+    parser.add_argument("--num_epochs", type=int, default=100, help='Number of epochs for training. ')
+    parser.add_argument('--batch_size', type=int, default=64, help='Mini batch size')
+    parser.add_argument("--lr", type=float, default=0.01)
     parser.add_argument('--callbacks', type=json.loads, default={},
                         help=' {"PPE":{ "last_percent_to_consider": 10}}, {"GN": {"std":0.1}}')
     parser.add_argument("--backend", type=str, default='pandas',
@@ -86,10 +86,12 @@ def get_default_arguments(description=None):
                         help='READ only first N triples. If 0, read all.')
     parser.add_argument("--add_noise_rate", type=float, default=0.0,
                         help='Add x % of noisy triples into training dataset.')
-    parser.add_argument('--p', type=int, default=0,
+    parser.add_argument('--p', type=int, default=3,
                         help='P for Clifford Algebra')
-    parser.add_argument('--q', type=int, default=0,
+    parser.add_argument('--q', type=int, default=4,
                         help='Q for Clifford Algebra')
+    parser.add_argument('--r', type=int, default=1,
+                        help='R for Clifford Algebra')
     parser.add_argument('--auto_batch_finder', type=bool, default=False,
                         help='Find a batch size w.r.t. computational budgets')
     parser.add_argument("--pykeen_model_kwargs", nargs='*', action=ParseDict,
