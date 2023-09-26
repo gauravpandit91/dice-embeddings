@@ -297,7 +297,7 @@ class LFMult(BaseKGE): # embedding with polynomials
         head_ent_emb, rel_emb, tail_ent_emb = self.get_triple_representation(idx_triple)
 
         
-        score = self.comp_func(head_ent_emb,rel_emb,tail_ent_emb)
+        score = self.tri_score(head_ent_emb,rel_emb,tail_ent_emb)
         
         return score
 
