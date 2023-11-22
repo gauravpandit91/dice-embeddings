@@ -291,18 +291,43 @@ class LFMult(BaseKGE): # embedding with polynomials
         self.entity_embeddings = torch.nn.Embedding(self.num_entities, self.embedding_dim)
         self.relation_embeddings = torch.nn.Embedding(self.num_relations, self.embedding_dim)
         self.x_values = torch.linspace(0, 1, 100)
+        self.degree = self.args.get("degree",0)
+        self.m = int(self.embedding_dim/(1+self.degree))
+        self.batch_size = 128 # 2*batch_size to be remove
 
     def forward_triples(self, idx_triple): # idx_triplet = (h_idx, r_idx, t_idx) #change this to the forward_triples
 
         head_ent_emb, rel_emb, tail_ent_emb = self.get_triple_representation(idx_triple)
 
-        
-        score = self.tri_score(head_ent_emb,rel_emb,tail_ent_emb)
-        
-        return score
+        coeff_head, coeff_rel, coeff_tail = self.construct_multi_coeff(head_ent_emb), self.construct_multi_coeff(rel_emb), self.construct_multi_coeff(tail_ent_emb)
 
 
-    def tri_score(self, h, r, t):
+        #score = self.tri_score(coeff_head,coeff_rel,coeff_tail)
+
+        score = torch.zeros(self.batch_size,self.m)
+
+
+        for b in range(self.batch_size):
+
+            print(b)
+        
+            score[b,:] = self.tri_score(coeff_head[b,:],coeff_rel[b,:],coeff_tail[b,:])
+        
+        s = score.sum(dim=1)
+        
+        return s
+    
+    def construct_multi_coeff(self, x):
+
+        coeffs = torch.hsplit(x,self.degree + 1)
+        coeffs = torch.stack(coeffs,dim=1)
+
+        return coeffs.transpose(1,2)
+
+
+
+
+    def tri_score(self, coeff_h, coeff_r, coeff_t):
 
         '''this part implement the trilinear scoring techniques: 
 
@@ -317,16 +342,13 @@ class LFMult(BaseKGE): # embedding with polynomials
          
          '''
         
-        i_range, j_range, k_range = torch.meshgrid(torch.arange(self.embedding_dim),torch.arange(self.embedding_dim),torch.arange(self.embedding_dim))
+        i_range, j_range, k_range = torch.meshgrid(torch.arange(self.degree+1),torch.arange(self.degree+1),torch.arange(self.degree+1))
+        terms = 1 / (1 + i_range + j_range + k_range) 
 
-        #terms = 1 / (1 + (i_range + j_range + k_range)%self.embedding_dim) #with the modulo
-
-        terms = 1 / (1 + i_range + j_range + k_range) #without the modulo
-
-        weighted_terms = terms * h.view(-1, 1, self.embedding_dim, 1) * r.view(-1, self.embedding_dim, 1, 1) * t.view(-1, 1, 1,self.embedding_dim)
         
+        weighted_terms = terms*coeff_h.view(-1, 1, self.degree+1, 1) *coeff_r.view(-1, self.degree+1, 1, 1) * coeff_t.view(-1, 1, 1,self.degree+1)
         result = torch.sum(weighted_terms, dim=[-3,-2,-1])
-        
+       
         return result
     
     def vtp_score(self, h, r, t):
