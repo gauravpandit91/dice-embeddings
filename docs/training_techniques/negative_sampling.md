@@ -1,1 +1,0 @@
-# Negative Sampling Technique
