@@ -16,3 +16,4 @@ ghp-import>=2.1.0
 furo>=2023.08.19
 tiktoken>=0.5.1
 beautifulsoup4>=4.12.2
+sphinx-rtd-theme
