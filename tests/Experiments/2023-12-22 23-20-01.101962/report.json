@@ -1,0 +1,11 @@
+{
+    "num_train_triples": 10432,
+    "num_entities": 135,
+    "num_relations": 92,
+    "max_length_subword_tokens": null,
+    "runtime_kg_loading": 0.08487057685852051,
+    "EstimatedSizeMB": 0.006928443908691406,
+    "NumParam": 7265,
+    "path_experiment_folder": "c:\\Users\\amall\\OneDrive\\Desktop\\JOB\\Knowledge Graph\\dice-embeddings\\tests/Experiments/2023-12-22 23-20-01.101962",
+    "Runtime": 6.885188102722168
+}
